@@ -56,13 +56,13 @@ public class Main {
 			System.out.println("Veuillez saisir votre numéro de compte:");
 			String numCompte = scanner.nextLine();
 			Statement statement = connec.createStatement();
-			
-			//TODO cas ou le num de compte est FAUX !!!!
+
+			// TODO cas ou le num de compte est FAUX !!!!
 			if (witchBank(numCompte) == null) {
 				System.out.println("Numéro de compte invalide : " + numCompte);
-				return false;//PAS BEAU !!
+				return false;// PAS BEAU !!
 			}
-			
+
 			// try des requetes pour la récup du compte et du clien associer
 			try (ResultSet resultSet = statement
 					.executeQuery("SELECT * FROM compte WHERE num_compte = '" + numCompte + "'")) {
@@ -95,7 +95,7 @@ public class Main {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
-		return true; //PAS BEAU !!
+		return true; // PAS BEAU !!
 
 	}
 
@@ -148,7 +148,7 @@ public class Main {
 	}
 
 	public static boolean faireVirement(String numCompteDebit, String numCompteCredit, int montant) {
-		Boolean isVirementDone = false;
+		Boolean virementDone = false;
 
 		// try de connection à la bd
 		try (Connection connec = DriverManager.getConnection("jdbc:postgresql://localhost:5432/hbexo", "postgres",
@@ -166,7 +166,7 @@ public class Main {
 			// try d'update du compte débiteur (--) avec le montant
 			try (ResultSet resultSet = statement.executeQuery("UPDATE compte SET amount = amount + '" + montantNeg
 					+ "' WHERE num_compte = '" + numCompteDebit + "'")) {
-				isVirementDone = true;
+				virementDone = true;
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -174,7 +174,43 @@ public class Main {
 			System.out.println(e);
 		}
 
-		return isVirementDone;
+		return virementDone;
+	}
+
+	public static boolean isVirementDoable(String numCompteDebit, String numCompteCredit, int montant) {
+		boolean isDoable = false;
+
+		// TODO 1- tester si les deux numéro de compte sont valide/existe
+		// TODO 1.1- tester si les deux numéro de compte sont Different
+		// TODO 2- test si le compte DEBITEUR possede asser d'argent par rapport
+		// au montant
+		// TODO 3- test si le montant n'est pas negatif
+		// TODO
+		try (Connection connec = DriverManager.getConnection("jdbc:postgresql://localhost:5432/hbexo", "postgres",
+				"1234")) {
+			Statement statement = connec.createStatement();
+//*********************************
+			// try d'update du compte crediteur (++) avec le montant
+			try (ResultSet resultSet = statement.executeQuery("UPDATE compte SET amount =  amount + '" + montant
+					+ "' WHERE num_compte = '" + numCompteCredit + "'")) {
+
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+
+			int montantNeg = montant * -1;
+//			// try d'update du compte débiteur (--) avec le montant
+//			try (ResultSet resultSet = statement.executeQuery("UPDATE compte SET amount = amount + '" + montantNeg
+//					+ "' WHERE num_compte = '" + numCompteDebit + "'")) {
+//				isDoable = true;
+//			} catch (Exception e) {
+//				System.out.println(e);
+//			}
+//***********************************************************
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return isDoable;
 	}
 
 	public static boolean toBoolean(String strBoolean) {
