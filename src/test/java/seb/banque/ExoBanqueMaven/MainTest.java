@@ -46,28 +46,28 @@ public class MainTest {
 		 assertEquals(nomBanque, null);
 	 }
 	
-	@Test
-	public void twoAcountExistIsVirementDoableTest(){
-		
-		assertTrue(Main.isVirementDoable(NUMCOMPTE1, NUMCOMPTE2, MONTANT));
-	}
-	
-	@Test
-	public void twoSameAccountOfIsVirementDoableTest(){
-		
-		assertFalse(Main.isVirementDoable(NUMCOMPTE1, NUMCOMPTE1, MONTANT));
-	}
-	
-	@Test
-	public void debiteurNotEnoughMoneyOfIsVirementDoableTest(){
-		
-		assertFalse(Main.isVirementDoable(NUMCOMPTE1, NUMCOMPTE2, BIG_MONTANT));
-	}
-	
-	@Test
-	public void negativeAmountOfIsVirementDoableTest(){
-		
-		assertFalse(Main.isVirementDoable(NUMCOMPTE1, NUMCOMPTE2, NEG_MONTANT));
-	}
+//	@Test
+//	public void twoAcountExistIsVirementDoableTest(){
+//		
+//		assertTrue(Main.isVirementDoable(NUMCOMPTE1, NUMCOMPTE2, MONTANT));
+//	}
+//	
+//	@Test
+//	public void twoSameAccountOfIsVirementDoableTest(){
+//		
+//		assertFalse(Main.isVirementDoable(NUMCOMPTE1, NUMCOMPTE1, MONTANT));
+//	}
+//	
+//	@Test
+//	public void debiteurNotEnoughMoneyOfIsVirementDoableTest(){
+//		
+//		assertFalse(Main.isVirementDoable(NUMCOMPTE1, NUMCOMPTE2, BIG_MONTANT));
+//	}
+//	
+//	@Test
+//	public void negativeAmountOfIsVirementDoableTest(){
+//		
+//		assertFalse(Main.isVirementDoable(NUMCOMPTE1, NUMCOMPTE2, NEG_MONTANT));
+//	}
 	
 }
