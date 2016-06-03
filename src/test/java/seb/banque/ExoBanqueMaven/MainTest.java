@@ -1,6 +1,9 @@
 package seb.banque.ExoBanqueMaven;
 
 import static org.junit.Assert.*;
+
+import javax.print.DocFlavor.STRING;
+
 import org.junit.Test;
 
 public class MainTest {
@@ -13,6 +16,12 @@ public class MainTest {
 	private static final String NUMCOMPTE2 = "3G7065";
 	private static final String NOMBANQUE1 = "CIC";
 	private static final String NOMBANQUE2 = "BNP Parisbas";
+	private static final boolean TRUE_BOOLEAN = true;
+	private static final boolean FALSE_BOOLEAN = false;
+	private static final String STRING_BOOLEAN_OUI = "oui";
+	private static final String STRING_BOOLEAN_YES = "yes";
+	private static final String STRING_BOOLEAN_NON = "non";
+	private static final String STRING_BOOLEAN_NO = "no";
 	 
 	@Test
 	 public void goodNumCompteOfWitchBankTest(){
@@ -46,6 +55,38 @@ public class MainTest {
 		 assertEquals(nomBanque, null);
 	 }
 	
+	
+	@Test
+	public void goodStringOuiReturnTrueFunctionToBooleanTest(){
+		boolean booleanTrue = Main.toBoolean(STRING_BOOLEAN_OUI);
+		
+		assertTrue(booleanTrue);
+	
+	}
+	
+	@Test
+	public void goodStringYesReturnTrueFunctionToBooleanTest(){
+		boolean booleanTrue = Main.toBoolean(STRING_BOOLEAN_YES);
+		
+		assertTrue(booleanTrue);
+	
+	}
+	
+	@Test
+	public void goodStringNonReturnFalseFunctionToBooleanTest(){
+		boolean booleanFalse = Main.toBoolean(STRING_BOOLEAN_NON);
+		
+		assertFalse(booleanFalse);
+	
+	}
+	
+	@Test
+	public void goodStringNoReturnFalseFunctionToBooleanTest(){
+		boolean booleanFalse = Main.toBoolean(STRING_BOOLEAN_NO);
+		
+		assertFalse(booleanFalse);
+	
+	}
 //	@Test
 //	public void twoAcountExistIsVirementDoableTest(){
 //		

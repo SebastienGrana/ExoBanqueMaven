@@ -214,13 +214,14 @@ public class Main {
 	}
 
 	public static boolean toBoolean(String strBoolean) {
-		boolean boolBoolean = false;
-		if (strBoolean.equals("oui")) {
-			boolBoolean = true;
-		} else if (strBoolean.equals("non")) {
-			boolBoolean = false;
+		strBoolean.toLowerCase();
+		boolean realBoolean = false;
+		if (strBoolean.equals("oui")|| strBoolean.equals("yes")) {
+			realBoolean = true;
+		} else if (strBoolean.equals("non")|| strBoolean.equals("no")) {
+			realBoolean = false;
 		}
-		return boolBoolean;
+		return realBoolean;
 	}
 
 	public static void main(String[] args) throws SQLException {
