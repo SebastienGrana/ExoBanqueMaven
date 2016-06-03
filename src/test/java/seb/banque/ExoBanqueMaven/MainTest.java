@@ -22,6 +22,9 @@ public class MainTest {
 	private static final String STRING_BOOLEAN_YES = "yes";
 	private static final String STRING_BOOLEAN_NON = "non";
 	private static final String STRING_BOOLEAN_NO = "no";
+	private static final String STRING_BOOLEAN_UPPERCASE = "YES";
+	private static final String WRONG_STRING_BOOLEAN = "Yres";
+	private static final String SPECIAL_CHAR_STRING_BOOLEAN = "Yes;!";
 	 
 	@Test
 	 public void goodNumCompteOfWitchBankTest(){
@@ -85,6 +88,14 @@ public class MainTest {
 		boolean booleanFalse = Main.toBoolean(STRING_BOOLEAN_NO);
 		
 		assertFalse(booleanFalse);
+	
+	}
+	
+	@Test
+	public void goodStringYesUpperCaseReturnTrueFunctionToBooleanTest(){
+		boolean booleanTrue = Main.toBoolean(STRING_BOOLEAN_UPPERCASE);
+		
+		assertTrue(booleanTrue);
 	
 	}
 //	@Test

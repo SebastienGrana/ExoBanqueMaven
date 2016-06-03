@@ -214,7 +214,7 @@ public class Main {
 	}
 
 	public static boolean toBoolean(String strBoolean) {
-		strBoolean.toLowerCase();
+		strBoolean = strBoolean.toLowerCase();
 		boolean realBoolean = false;
 		if (strBoolean.equals("oui")|| strBoolean.equals("yes")) {
 			realBoolean = true;
